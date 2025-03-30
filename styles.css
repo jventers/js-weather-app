@@ -1,0 +1,301 @@
+/* --------------------------------------------------
+   Base Reset & Typography
+-------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  font-family: "Inter", "Open Sans", Helvetica, Arial, sans-serif;
+  color: white;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    #15befa,
+    #106af2
+  ); /* default warm day */
+  transition: background 0.5s ease-in-out;
+}
+
+/* --------------------------------------------------
+   Theme Variants (Day/Night & Temp)
+-------------------------------------------------- */
+.day.cold {
+  background: linear-gradient(to bottom, #254983, #5b9ff4);
+}
+.day.warm {
+  background: linear-gradient(to bottom, #15befa, #106af2);
+}
+.night.cold {
+  background: linear-gradient(to bottom, #14225b, #114f7d);
+}
+.night.warm {
+  background: linear-gradient(to bottom, #3323af, #9b6cf0);
+}
+
+/* --------------------------------------------------
+   Layout Structure
+-------------------------------------------------- */
+/* Header */
+.location-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+}
+.location-header img {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+}
+
+/* --------------------------------------------------
+   Shared Panel Styles
+-------------------------------------------------- */
+.weather-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 0.25rem;
+}
+.forecast {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/* --------------------------------------------------
+   Today Panel Styles
+-------------------------------------------------- */
+/* Current temperature */
+.temperature-now {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+.temperature-icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+#current-temp {
+  font-size: 7.25rem;
+  font-weight: bold;
+}
+#weather-icon-today {
+  width: 8.25rem;
+  height: 8.25rem;
+}
+#high-low {
+  font-size: 1.25rem;
+  padding-left: 0.25rem;
+}
+
+/* Arc and Orb */
+.arc-container {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  max-height: 60vh;
+}
+
+#orb {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 8rem;
+  height: 8rem;
+  z-index: 10;
+  top: 0;
+  transition: left 0.6s ease, top 0.6s ease;
+}
+
+.sun {
+  filter: drop-shadow(0 0 10px #ffd700);
+}
+
+.moon {
+  filter: drop-shadow(0 0 8px #ccc);
+}
+
+#current-time {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+/* --------------------------------------------------
+   Future Panel Styles
+-------------------------------------------------- */
+/* Future Temp */
+.future-temperature {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  gap: 0.5rem;
+  font-size: 5rem;
+  padding: 0 1rem;
+}
+.future-temp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+}
+.future-temp-container small {
+  font-size: 1.25rem;
+  padding-right: 1.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+#future-temp-high,
+#future-temp-low {
+  font-weight: 900;
+}
+
+#weather-icon-future {
+  min-width: 10rem;
+  width: 50%;
+  max-width: 15rem;
+  aspect-ratio: 1/1;
+}
+
+#future-date {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+/* --------------------------------------------------
+   Forecast Button Navigation
+-------------------------------------------------- */
+.forecast-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  padding: 1.25rem 1rem;
+  gap: 0.25rem;
+}
+
+.forecast-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.25rem 0.25rem;
+  min-width: fit-content;
+  width: 100%;
+  max-width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+.forecast-btn:hover,
+.forecast-btn:active,
+.forecast-btn.active {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+.forecast-btn.active {
+  box-shadow: -1px -1px 1px rgba(255, 255, 255, 0.5),
+    1px 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.forecast-btn .day-name {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.forecast-btn .date {
+  font-size: 0.625rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.forecast-btn .forecast-icon {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+.forecast-btn .temp {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.forecast-btn .secondary {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* --------------------------------------------------
+   Utility & Helper Classes
+-------------------------------------------------- */
+.hidden {
+  display: none;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

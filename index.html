@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="day warm">
+    <!-- Location -->
+    <header class="location-header">
+      <h1 class="sr-only" aria-hidden="true">Weather App</h1>
+      <img src="./assets/location-dot.svg" alt="Location Icon" />
+      <span id="location">Loading...</span>
+    </header>
+
+    <!-- Main Weather Display -->
+    <main class="main-content">
+      <!-- "Today" Layout -->
+      <section id="today-panel" class="weather-panel hidden">
+        <div class="temperature-now">
+          <div class="temperature-icon-row">
+            <span id="current-temp">--°</span>
+            <img id="weather-icon-today" src="" alt="Weather Icon" />
+          </div>
+          <p id="high-low">High --° • Low --°</p>
+        </div>
+
+        <!-- Sun/Moon Arc -->
+        <div class="arc-container">
+          <svg
+            id="sun-moon-arc-svg"
+            width="100%"
+            preserveAspectRatio="xMidYMid meet"
+            height="auto"
+            viewBox="0 0 440 153"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M-0.749985 151.5C16.75 86.5 112.25 2 219.75 2C323.75 2 427.75 95 440.75 151.5"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-dasharray="8 12"
+            />
+          </svg>
+          <img
+            id="orb"
+            class="orb sun"
+            src="assets/sun.png"
+            alt="Sun or Moon"
+          />
+        </div>
+        <div class="details">
+          <p id="current-time">--:--</p>
+          <p id="today-description" class="forecast">Loading...</p>
+        </div>
+      </section>
+
+      <!-- "Future" Layout (hidden by default) -->
+      <section id="future-panel" class="weather-panel hidden">
+        <div class="future-temperature">
+          <div class="future-temp-container">
+            <span id="future-temp-high">--°</span>
+            <small>High</small>
+          </div>
+          <span>/</span>
+          <div class="future-temp-container">
+            <span id="future-temp-low">--°</span>
+            <small>Low</small>
+          </div>
+        </div>
+        <img id="weather-icon-future" src="" alt="Forecast Icon" />
+        <div class="details">
+          <p id="future-date">--</p>
+          <p id="future-description" class="forecast">Loading...</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Forecast Buttons -->
+    <nav class="forecast-buttons hidden" id="forecast-buttons">
+      <!-- Buttons injected here dynamically -->
+    </nav>
+
+    <script src="scripts/app.js" type="module"></script>
+  </body>
+</html>
